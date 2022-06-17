@@ -1,0 +1,224 @@
+<template>
+    <!-- <div class="slds-box slds-theme--default">
+        <iframe src={siteURL} height="100px" width="150px"></iframe>
+    </div> -->
+    <lightning-card title="Information">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <!-- <lightning-input id="inputdata" type="text" label="Enter some text" onfocusout={onfocusout} value={searchkey} onchange={onloaddata}></lightning-input> -->
+                            <lightning-input id="user" type="text" style="padding-left: 2%; width:47%"  label="user" onfocusout={onfocusout3} value={usersearch} onchange={onloaddata3}></lightning-input>
+                                <template if:true={allusers}>
+                            <div id="listbox-id-12" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" style="max-width: 446px;left: 25%;"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={allusers} for:item="data">
+                                          <li role="presentation" class="slds-listbox__item" key={data.key} value={data} onclick={getdataa3}>
+                                            <div data-key={data.key} data-name={data} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                role="option">
+                                                
+                                                <span class="slds-media__figure slds-listbox__option-icon">
+                                                    <span class="slds-icon_container slds-icon-standard-account">
+                                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#people"> </use>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    
+                                                        <span data-key={data.key} data-name={data}
+                                                        class="slds-listbox__option-text slds-listbox__option-text_entity" >
+                                                        {data.value}
+                                                    </span>
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </template>
+                        </div>
+                    </div>
+                 
+                    
+                </span>
+            </div>
+            <!-- this is search list for fields list  -->
+           
+        </div> 
+        
+        <br><br>
+        
+        <!--uuuuuuuuuuu  -->
+        
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <!-- <lightning-input id="inputdata" type="text" label="Enter some text" onfocusout={onfocusout} value={searchkey} onchange={onloaddata}></lightning-input> -->
+                            <lightning-input id="sObject" type="text" style="padding-left: 4%;"  label="sObject" onfocusout={onfocusout} value={searchkey} onchange={onloaddata}></lightning-input>
+                                <template if:true={allnamedcontact}>
+                            <div id="listbox-id-14" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" style="max-width: 451px;left: 52%;"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={allnamedcontact} for:item="data">
+                                          <li role="presentation" class="slds-listbox__item" key={data.key} data-name={data} onclick={getdataa}>
+                                            <div data-key={data.key} data-name={data} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                role="option">
+                                                <span class="slds-media__figure slds-listbox__option-icon">
+                                                    <span class="slds-icon_container slds-icon-standard-account">
+                                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                            <use xlink:href="/bad/image/url.jpg.svg#avatar">
+                                                            </use>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span data-key={data.key} data-name={data}
+                                                        class="slds-listbox__option-text slds-listbox__option-text_entity" >{data}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </template>
+                        </div>
+                    </div>
+                 
+                    
+                </span>
+            </div>
+            <!-- this is search list for fields list  -->
+            <div class="slds-col">
+                <span>
+                    <!--  -->
+                    <div class="slds-form-element__control">
+                        <div class="slds-p-around_medium lgc-bg">
+                            <lightning-input id="sObjectField" list="fields" style="padding-right: 4%;" label="field of sobject" onfocusout={onfocusout2}  value={fieldsearch} onchange={onloaddata2}></lightning-input>
+                            <!-- <lightning-input id="sObject" list="objects" style="padding-left: 4%;"  label="sObject" onfocusout={onfocusout} value={searchkey} onchange={onloaddata}></lightning-input> -->
+                                <template if:true={allfielddata}>
+                            <div id="listbox-id-16" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" style="max-width: 446px;left: 48%;"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={allfielddata} for:item="data">
+                                          <li role="presentation" class="slds-listbox__item" key={data.key} data-name={data} onclick={getdataa2}>
+                                            <div data-key={data.key} data-name={data} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                role="option">
+                                                <span class="slds-media__figure slds-listbox__option-icon">
+                                                    <span class="slds-icon_container slds-icon-standard-account">
+                                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                                            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account">
+                                                            </use>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+                                                <span class="slds-media__body">
+                                                    <span data-key={data.key} data-name={data}
+                                                        class="slds-listbox__option-text slds-listbox__option-text_entity" >{data}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </template>
+                        </div>
+                    </div>
+
+                    
+                </span> 
+            </div> 
+        </div>  
+            <br>
+            
+
+       
+       <!-- lightning button   -->
+
+       <lightning-button variant="success" label={clickedButtonLabel} title="Successful action" onclick={searchButton2} class="slds-m-left_x-small" style="position: absolute;
+          right: 45%;"></lightning-button>
+          <br><br>
+       <!-- <p>Selected value is: {value}</p> -->
+    </lightning-card>
+    <!-- this is data tabel that show data  -->
+    
+   
+    <template if:true={boolVisible}>
+       <lightning-card>
+          <div style="height: 100px;">
+             <lightning-datatable
+                hide-checkbox-column
+                key-field="id"
+                data={data}
+                columns={columns}
+                >
+             </lightning-datatable>
+             
+          </div>
+       </lightning-card>
+    
+    <lightning-card>
+
+      <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+        <thead>
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Name">PermissionSet Name</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title="SobjectName">SobjectName</div>
+            </th>
+           
+            <th class="" scope="col">
+                <div class="slds-truncate" title="Field Read Permission">Read Permission</div>                   
+            </th>   
+            <th class="" scope="col">
+                <div class="slds-truncate" title="Field Read Permission">Edit Permission</div>                   
+            </th>
+          </tr>
+          <template for:each={objectvalues} for:item="row">
+            <tr key={row}>
+                <td>{row.label}</td>
+                <td>{row.value}</td>
+                <td>{row.read}</td>
+                <td>{row.write}</td>
+
+            </tr>     
+          </template>
+        </thead>
+    </table>
+</lightning-card>
+    <lightning-card>
+        <!-- they show validation rules  -->
+        <div style="height: 100px;">
+            <table class="slds-table slds-table_bordered slds-border_left slds-border_right">
+                <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                    <div class="slds-truncate" title="Name">ValidationRule Name</div>
+                    </th>
+                    <th class="" scope="col">
+                    <div class="slds-truncate" title="Formula">Validation rule formula</div>
+                    </th>
+                </tr>
+                <template for:each={showdata} for:item="row">
+                    <tr key={row.lable}>
+                        <td>{row.label}</td>
+                        <td>{row.value}</td>
+                        </tr>     
+                </template>
+                </thead>
+            </table>
+        </div>
+    </lightning-card>
+</template> 
+
+
+ </template>
+ 
